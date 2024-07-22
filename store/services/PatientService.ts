@@ -1,5 +1,5 @@
 import { BaseService } from "./BaseService";
-import { PatientRecord } from "../../types/PatientRecord";
+import { PatientRecord } from "@/types/PatientRecord";
 
 export const PatientService = BaseService.injectEndpoints({
   endpoints: (builder) => ({

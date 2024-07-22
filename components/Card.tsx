@@ -1,17 +1,35 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState } from "react";
-import { PatientRecord } from "@/types/PatientRecord";
 import Link from "next/link";
 import Image from "next/image";
-import arrowDown from "../assets/arrowDown.svg";
-import arrowUp from "../assets/arrowUp.svg";
-import edit from "../assets/edit.svg";
+import { useDispatch } from "react-redux";
+import { PatientRecord } from "@/types/PatientRecord";
+import arrowDown from "@/assets/arrowDown.svg";
+import arrowUp from "@/assets/arrowUp.svg";
+import edit from "@/assets/edit.svg";
+import EditModal from "./EditModal";
+import { updatePatient } from "@/store/slices/PatientsSlice";
 
 const Card = ({ dataCard }: { dataCard: PatientRecord }) => {
   const [showDetails, setShowDetails] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const dispatch = useDispatch();
 
   const toggleDetails = () => {
     setShowDetails(!showDetails);
+  };
+
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+  const handleEdit = (updatedRecord: PatientRecord) => {
+    dispatch(updatePatient(updatedRecord));
+    closeModal();
   };
 
   return (
@@ -19,24 +37,23 @@ const Card = ({ dataCard }: { dataCard: PatientRecord }) => {
       <div className="p-4">
         {dataCard?.avatar && (
           <div className="flex justify-center mb-4">
-            <img
+            <Image
               src={dataCard.avatar}
               alt={dataCard.name}
-              className="w-32 h-32 rounded-full object-cover"
+              className="rounded-full object-cover"
+              width={128}
+              height={128}
             />
           </div>
         )}
-        <h1 className="text-2xl font-bold text-gray-800 dark:text-white">
+        <h1 className="text-2xl font-bold text-gray-800 dark:text-white h-14">
           {dataCard?.name}
         </h1>
         <div className="mt-3">
           <Link href={dataCard?.website}>Visit Website</Link>
         </div>
         <div className="mt-4 flex items-center justify-between">
-          <button
-            onClick={toggleDetails}
-            className="text-indigo-600 dark:text-indigo-400"
-          >
+          <button onClick={toggleDetails}>
             <Image
               src={showDetails ? arrowUp : arrowDown}
               alt={showDetails ? "Hide Details" : "Show Details"}
@@ -46,18 +63,30 @@ const Card = ({ dataCard }: { dataCard: PatientRecord }) => {
           </button>
           <div className="ml-auto">
             <button>
-              <Image src={edit} alt="Edit" width={24} height={24} />
+              <Image
+                src={edit}
+                alt="Edit"
+                width={24}
+                height={24}
+                onClick={openModal}
+              />
             </button>
           </div>
         </div>
         {showDetails && (
           <div className="mt-4">
-            <p className="text-gray-600 dark:text-gray-300">
-              {dataCard?.description}
-            </p>
+            <h2 className="text-lg font-semibold text-left">Description</h2>
+            <p className="text-justify mt-2">{dataCard?.description}</p>
           </div>
         )}
       </div>
+      <EditModal
+        isOpen={showModal}
+        onRequestClose={closeModal}
+        patientData={dataCard}
+        onSave={handleEdit}
+        isEdit={true}
+      />
     </li>
   );
 };

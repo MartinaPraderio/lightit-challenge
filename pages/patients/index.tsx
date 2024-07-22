@@ -1,13 +1,13 @@
-//import { getPatientRecords } from "./api/patient-records";
-import { useEffect, useState } from "react";
-import { PatientRecord } from "../types/PatientRecord";
-import Card from "../components/Card";
-import Head from "next/head";
-import { useGetPatientRecordsQuery } from "../store/services/PatientService";
-import { setPatients } from "@/store/slices/PatientsSlice";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { PatientRecord } from "@/types/PatientRecord";
+import Card from "@/components/Card";
+import Loading from "@/components/shared/Loading";
+import Error from "@/components/shared/Error";
 import { RootState } from "@/store/store";
-import Loading from "@/components/Loading";
+import { useGetPatientRecordsQuery } from "@/store/services/PatientService";
+import { setPatients } from "@/store/slices/PatientsSlice";
+
 
 export default function PatientRecords(): JSX.Element {
   const { data: patients, error, isLoading } = useGetPatientRecordsQuery();
@@ -27,7 +27,7 @@ export default function PatientRecords(): JSX.Element {
   }
 
   if (error) {
-    return <div>Error loading patients</div>;
+    return <Error title="Error loading patients records" />;
   }
 
   return (

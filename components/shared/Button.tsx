@@ -3,18 +3,17 @@ import Link from "next/link";
 import React, { ReactElement } from "react";
 
 const button = cva(
-  [
-    "px-4",
-    "py-2",
-    "rounded-full",
-    "cursor-pointer",
-    "transition-all",
-    "text-white",
-  ],
+  ["px-4", "py-2", "cursor-pointer", "transition-all", "text-white"],
   {
     variants: {
       intent: {
-        primary: ["bg-lightPink", "hover:bg-darkPink"],
+        primary: [
+          "bg-lightBlue",
+          "hover:bg-darkBlue",
+          "rounded-full",
+          "shadow-md",
+          "font-semibold",
+        ],
         secondary: ["bg-blue-400", "hover:bg-blue-500"],
         info: ["bg-gray-400", "hover:bg-gray-500"],
         link: ["bg-none", "text-pink-400", "hover:text-pink-500", "px-0"],

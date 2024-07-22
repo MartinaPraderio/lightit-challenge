@@ -1,27 +1,31 @@
 import Image from "next/image";
-import { Button } from "@/components/Button";
-import logoBlue from "../assets/heartPulseLogo.svg";
-import { useSelector } from "react-redux";
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { PatientRecord } from "@/types/PatientRecord";
+import logoBlue from "@/assets/heartPulseLogo.svg";
+import { Button } from "@/components/shared/Button";
+import EditModal from "./EditModal";
 import { RootState } from "@/store/store";
 import { addPatient } from "@/store/slices/PatientsSlice";
-import { useDispatch } from "react-redux";
-import { PatientRecord } from "@/types/PatientRecord";
 
 export default function Header() {
   const patients = useSelector((state: RootState) => state.patients.records);
+  const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
 
-  const handleAddPatient = () => () => {
-    const newPatient: PatientRecord = {
-      id: "9876543",
-      name: "New Patient",
-      avatar:
-        "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/563.jpg",
-      description: "Description of new patient",
-      website: "https://example.com",
-    };
-    dispatch(addPatient(newPatient));
+  const openModal = () => {
+    setShowModal(true);
   };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+  const handleCreate = (newRecord: PatientRecord) => {
+    dispatch(addPatient(newRecord));
+    closeModal();
+  };
+
   return (
     <header id="main-header">
       <div id="title">
@@ -35,12 +39,14 @@ export default function Header() {
         <p>{patients && ` (${patients.length})`}</p>
       </div>
       <nav>
-        <Button
-          variant="primary"
-          label="Add Patient +"
-          onClick={handleAddPatient()}
-        />
+        <Button variant="primary" label="ADD PATIENT +" onClick={openModal} />
       </nav>
+      <EditModal
+        isOpen={showModal}
+        onRequestClose={closeModal}
+        onSave={handleCreate}
+        isEdit={false}
+      />
     </header>
   );
 }
