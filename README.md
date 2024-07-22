@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
-First, run the development server:
+First install all needed packages
 
 ```bash
-npm run dev
-# or
+yarn install
+```
+
+Then, run the development server:
+
+```bash
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Documentation
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Tech Stack
 
-## Learn More
+### Code Quality
 
-To learn more about Next.js, take a look at the following resources:
+- [Prettier](https://prettier.io/): A code formatting tool that supports multiple languages and integrates with most editors.
+- [ESLint](https://eslint.org/): A linting tool for JavaScript and JSX, which helps to find and fix problems in the code.
+- [Typescript] (https://www.typescriptlang.org/): A superset of JavaScrip that enhances code quality and maintainability by catching errors at compile time, providing better refactoring support, and offering features like interfaces and type aliases.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Styles 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- [Tailwind CSS](https://tailwindcss.com/)
 
-## Deploy on Vercel
+### State Management
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [Redux](https://redux.js.org/)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[Redux Toolkit](https://redux-toolkit.js.org/) with [RTK Query](https://redux-toolkit.js.org/rtk-query/overview) are used for store management, to handle api requests and caching. In this context a file inside the **services** folders should be a slice that interacts with the api using RTQ; and a file inside **slices** folder should be a more general slice that doesn't use RTQ. Both services and slices should be correctly imported to the store.ts file.
+
+## Git workflow
+
+### branches 
+
+- `develop` branch contains the latest stable version. 
+- `main` branch latest release version. 
+
+For new branches this rule is used: task_type/issueID_branch_name. Eg: feature/1_example_fature
+For this project we do not have a board with the issues so we not include the number in the branches names.
+
+## Pull Requests
+
+Name: task_type/issueID branch name
+Description:
+    - Associated Issues: Link to the issue 
+    - Brief description of what was done
+
+
