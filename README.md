@@ -23,7 +23,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 - [Prettier](https://prettier.io/): A code formatting tool that supports multiple languages and integrates with most editors.
 - [ESLint](https://eslint.org/): A linting tool for JavaScript and JSX, which helps to find and fix problems in the code.
-- [Typescript] (https://www.typescriptlang.org/): A superset of JavaScrip that enhances code quality and maintainability by catching errors at compile time, providing better refactoring support, and offering features like interfaces and type aliases.
+- [Typescript](https://www.typescriptlang.org/): A superset of JavaScrip that enhances code quality and maintainability by catching errors at compile time, providing better refactoring support, and offering features like interfaces and type aliases.
 
 ### Styles 
 
