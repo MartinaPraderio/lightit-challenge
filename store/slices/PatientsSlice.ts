@@ -20,9 +20,7 @@ const PatientsSlice = createSlice({
       state.records.push(action.payload);
     },
     updatePatient(state, action: PayloadAction<PatientRecord>) {
-      const index = state.records.findIndex(
-        (patient) => patient.id === action.payload.id
-      );
+      const index = state.records.findIndex(patient => patient.id === action.payload.id);
       if (index !== -1) {
         state.records[index] = action.payload;
       }

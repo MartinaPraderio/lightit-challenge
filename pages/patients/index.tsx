@@ -8,13 +8,10 @@ import { RootState } from "@/store/store";
 import { useGetPatientRecordsQuery } from "@/store/services/PatientService";
 import { setPatients } from "@/store/slices/PatientsSlice";
 
-
 export default function PatientRecords(): JSX.Element {
   const { data: patients, error, isLoading } = useGetPatientRecordsQuery();
   const dispatch = useDispatch();
-  const patientRecords = useSelector(
-    (state: RootState) => state.patients.records
-  );
+  const patientRecords = useSelector((state: RootState) => state.patients.records);
 
   useEffect(() => {
     if (patients) {
@@ -33,9 +30,7 @@ export default function PatientRecords(): JSX.Element {
   return (
     <>
       <ul id="records">
-        {patientRecords?.map((element: PatientRecord, i: number) => (
-          <PatientCard key={i} dataCard={element} />
-        ))}
+        {patientRecords?.map((element: PatientRecord, i: number) => <PatientCard key={i} dataCard={element} />)}
       </ul>
     </>
   );

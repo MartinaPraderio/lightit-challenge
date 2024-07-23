@@ -51,13 +51,7 @@ const PatientCard = ({ dataCard }: { dataCard: PatientRecord }) => {
           </button>
           <div className="ml-auto">
             <button>
-              <Image
-                src={edit}
-                alt="Edit"
-                width={24}
-                height={24}
-                onClick={openModal}
-              />
+              <Image src={edit} alt="Edit" width={24} height={24} onClick={openModal} />
             </button>
           </div>
         </div>

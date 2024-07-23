@@ -4,13 +4,7 @@ interface Props {
   color?: string;
 }
 
-const ball = cva([
-  "box-border",
-  "relative",
-  "w-[20px]",
-  "h-[20px]",
-  "rounded-full",
-]);
+const ball = cva(["box-border", "relative", "w-[20px]", "h-[20px]", "rounded-full"]);
 
 const Loading = ({ color = "bg-white" }: Props) => {
   return (

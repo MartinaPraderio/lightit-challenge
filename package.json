@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint --ext js,jsx,ts,tsx ./",
+    "prettier": "prettier --check --write './{components,pages,store,types,styles}/**/*.{js,jsx,tsx,ts,json,css}'"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.6",
@@ -28,9 +29,13 @@
     "@types/react-modal": "^3.16.3",
     "@types/react-redux": "^7.1.33",
     "@types/uuid": "^10.0.0",
+    "@typescript-eslint/eslint-plugin": "^7.17.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.5",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
     "postcss": "^8",
+    "prettier": "^3.3.3",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }

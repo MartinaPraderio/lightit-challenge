@@ -2,7 +2,7 @@ import { BaseService } from "./BaseService";
 import { PatientRecord } from "@/types/PatientRecord";
 
 export const PatientService = BaseService.injectEndpoints({
-  endpoints: (builder) => ({
+  endpoints: builder => ({
     getPatientRecords: builder.query<PatientRecord[], void>({
       query: () => ({
         url: "/users",

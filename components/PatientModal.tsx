@@ -10,21 +10,14 @@ interface EditModalProps {
   isOpen: boolean;
   onRequestClose: () => void;
   patientData?: PatientRecord;
+  // eslint-disable-next-line no-unused-vars
   onSave: (updatedRecord: PatientRecord) => void;
   isEdit: boolean;
 }
 
-const PatientModal: React.FC<EditModalProps> = ({
-  isOpen,
-  onRequestClose,
-  patientData,
-  onSave,
-  isEdit,
-}) => {
+const PatientModal: React.FC<EditModalProps> = ({ isOpen, onRequestClose, patientData, onSave, isEdit }) => {
   const [name, setName] = useState(patientData?.name || "");
-  const [description, setDescription] = useState(
-    patientData?.description || ""
-  );
+  const [description, setDescription] = useState(patientData?.description || "");
   const [website, setWebsite] = useState(patientData?.website || "");
   const [avatar, setAvatar] = useState(patientData?.avatar || "");
   const [errors, setErrors] = useState({
@@ -72,14 +65,9 @@ const PatientModal: React.FC<EditModalProps> = ({
         website,
       };
       onSave(updatedRecord);
-      toast.success(
-        `${
-          isEdit ? "Patient Record Updated" : "Patient Record Created"
-        } successfully!`,
-        {
-          autoClose: 3000,
-        }
-      );
+      toast.success(`${isEdit ? "Patient Record Updated" : "Patient Record Created"} successfully!`, {
+        autoClose: 3000,
+      });
       handleClose();
     } else {
       toast.error("Please correct the errors in the form", {
@@ -89,8 +77,7 @@ const PatientModal: React.FC<EditModalProps> = ({
   };
 
   const isValidUrl = (url: string) => {
-    const urlPattern =
-      /^(https?:\/\/)?([\w\d-]+\.)+[a-z]{2,6}(\/[\w\d-_.~:?#[@!$&'()*+,;=]*)?$/i;
+    const urlPattern = /^(https?:\/\/)?([\w\d-]+\.)+[a-z]{2,6}(\/[\w\d-_.~:?#[@!$&'()*+,;=]*)?$/i;
     return urlPattern.test(url);
   };
 
@@ -108,9 +95,7 @@ const PatientModal: React.FC<EditModalProps> = ({
       isValid = false;
     }
 
-    if (
-      !avatar.match(/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png|jpeg|svg)/g)
-    ) {
+    if (!avatar.match(/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png|jpeg|svg)/g)) {
       newErrors.avatar = "Avatar URL is invalid";
       isValid = false;
     }
@@ -124,11 +109,9 @@ const PatientModal: React.FC<EditModalProps> = ({
     return isValid;
   };
 
-  const handleInputChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target;
-    let newErrors = { ...errors };
+    const newErrors = { ...errors };
     switch (id) {
       case "name":
         setName(value);
@@ -164,51 +147,22 @@ const PatientModal: React.FC<EditModalProps> = ({
       className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
     >
       <div className="bg-white p-8 rounded-lg shadow-lg w-4/5 md:w-1/2 lg:w-1/3">
-        <h2 className="text-2xl mb-4 text-gray-700">
-          {isEdit ? "Edit Patient Record" : "Create Patient Record"}
-        </h2>
+        <h2 className="text-2xl mb-4 text-gray-700">{isEdit ? "Edit Patient Record" : "Create Patient Record"}</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <Input
-              id="name"
-              type="text"
-              label="Name"
-              value={name}
-              onChange={handleInputChange}
-            />
-            {errors.name && (
-              <p className="text-red-500 text-sm">{errors.name}</p>
-            )}
+            <Input id="name" type="text" label="Name" value={name} onChange={handleInputChange} />
+            {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
           </div>
           <div className="mb-4">
-            <Input
-              id="avatar"
-              type="text"
-              label="Avatar URL"
-              value={avatar}
-              onChange={handleInputChange}
-            />
-            {errors.avatar && (
-              <p className="text-red-500 text-sm">{errors.avatar}</p>
-            )}
+            <Input id="avatar" type="text" label="Avatar URL" value={avatar} onChange={handleInputChange} />
+            {errors.avatar && <p className="text-red-500 text-sm">{errors.avatar}</p>}
           </div>
           <div className="mb-4">
-            <Input
-              id="website"
-              type="text"
-              label="Website"
-              value={website}
-              onChange={handleInputChange}
-            />
-            {errors.website && (
-              <p className="text-red-500 text-sm">{errors.website}</p>
-            )}
+            <Input id="website" type="text" label="Website" value={website} onChange={handleInputChange} />
+            {errors.website && <p className="text-red-500 text-sm">{errors.website}</p>}
           </div>
           <div className="flex flex-col mb-4">
-            <label
-              htmlFor="description"
-              className="mb-2 text-sm font-medium text-gray-700"
-            >
+            <label htmlFor="description" className="mb-2 text-sm font-medium text-gray-700">
               Description
             </label>
             <textarea
@@ -218,17 +172,11 @@ const PatientModal: React.FC<EditModalProps> = ({
               className="border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
               rows={5}
             />
-            {errors.description && (
-              <p className="text-red-500 text-sm">{errors.description}</p>
-            )}
+            {errors.description && <p className="text-red-500 text-sm">{errors.description}</p>}
           </div>
           <div className="flex justify-end">
             <Button onClick={handleClose} variant="info" label="Cancel" />
-            <Button
-              onClick={handleSubmit}
-              label={isEdit ? "Save" : "Create"}
-              variant="primary"
-            />
+            <Button onClick={handleSubmit} label={isEdit ? "Save" : "Create"} variant="primary" />
           </div>
         </form>
       </div>
