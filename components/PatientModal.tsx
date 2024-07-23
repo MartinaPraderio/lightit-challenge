@@ -223,13 +223,7 @@ const PatientModal: React.FC<EditModalProps> = ({
             )}
           </div>
           <div className="flex justify-end">
-            <button
-              type="button"
-              onClick={handleClose}
-              className="hover:underline text-gray-700 mr-3"
-            >
-              Cancel
-            </button>
+            <Button onClick={handleClose} variant="info" label="Cancel" />
             <Button
               onClick={handleSubmit}
               label={isEdit ? "Save" : "Create"}

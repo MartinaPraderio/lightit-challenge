@@ -6,7 +6,7 @@ import { PatientRecord } from "@/types/PatientRecord";
 import arrowDown from "@/assets/arrowDown.svg";
 import arrowUp from "@/assets/arrowUp.svg";
 import edit from "@/assets/edit.svg";
-import PatientModal from "./PatientModal";  
+import PatientModal from "./PatientModal";
 import BaseCard from "./shared/Card";
 import { updatePatient } from "@/store/slices/PatientsSlice";
 
@@ -36,7 +36,9 @@ const PatientCard = ({ dataCard }: { dataCard: PatientRecord }) => {
     <li key={dataCard?.id} className="record-item">
       <BaseCard avatar={dataCard?.avatar} name={dataCard?.name}>
         <div className="mt-3">
-          <Link href={dataCard?.website}>Visit Website</Link>
+          <Link href={dataCard?.website} className="hover:text-gray-700">
+            Visit Website
+          </Link>
         </div>
         <div className="mt-4 flex items-center justify-between">
           <button onClick={toggleDetails}>
