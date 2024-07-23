@@ -17,17 +17,20 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Documentation
 
+In my development work, I always strive to maintain a clean and well-organized code structure. I use a modular approach and reusable components to ensure that the code is easy to maintain and scale. I create reusable components following design principles to ensure they are modular and configurable. For example, I developed a base card component (Card) that can be extended with specific properties based on the use case and also other components like Button, Loading or Input that are inside shared folder which can be reused throughout the project.
+
 ## Tech Stack
 
 ### Code Quality
 
 - [Prettier](https://prettier.io/): A code formatting tool that supports multiple languages and integrates with most editors.
 - [ESLint](https://eslint.org/): A linting tool for JavaScript and JSX, which helps to find and fix problems in the code.
-- [Typescript](https://www.typescriptlang.org/): A superset of JavaScrip that enhances code quality and maintainability by catching errors at compile time, providing better refactoring support, and offering features like interfaces and type aliases.
+  I implement ESLint and Prettier to maintain clean and consistent code. 
+- [Typescript](https://www.typescriptlang.org/): I use TypeScript to provide static typing and reduce runtime errors. This helps ensure that interfaces and types are adhered to throughout the application.
 
 ### Styles 
 
-- [Tailwind CSS](https://tailwindcss.com/)
+- [Tailwind CSS](https://tailwindcss.com/): A library that enables rapid UI development with a consistent design system through utility-first classes for styling.
 
 ### State Management
 
