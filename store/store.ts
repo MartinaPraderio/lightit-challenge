@@ -9,11 +9,7 @@ const store = configureStore({
     patients: patientsReducer,
     [BaseService.reducerPath]: BaseService.reducer,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(
-      BaseService.middleware,
-      PatientService.middleware
-    ),
+  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(BaseService.middleware, PatientService.middleware),
 });
 
 setupListeners(store.dispatch);

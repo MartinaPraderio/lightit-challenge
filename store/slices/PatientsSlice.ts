@@ -3,12 +3,10 @@ import { PatientRecord } from "@/types/PatientRecord";
 
 interface PatientsState {
   records: PatientRecord[];
-  status: "idle" | "loading" | "failed";
 }
 
 const initialState: PatientsState = {
   records: [],
-  status: "idle",
 };
 
 const PatientsSlice = createSlice({
@@ -22,20 +20,14 @@ const PatientsSlice = createSlice({
       state.records.push(action.payload);
     },
     updatePatient(state, action: PayloadAction<PatientRecord>) {
-      const index = state.records.findIndex(
-        (patient) => patient.id === action.payload.id
-      );
+      const index = state.records.findIndex(patient => patient.id === action.payload.id);
       if (index !== -1) {
         state.records[index] = action.payload;
       }
     },
-    setStatus(state, action: PayloadAction<"idle" | "loading" | "failed">) {
-      state.status = action.payload;
-    },
   },
 });
 
-export const { setPatients, addPatient, updatePatient, setStatus } =
-  PatientsSlice.actions;
+export const { setPatients, addPatient, updatePatient } = PatientsSlice.actions;
 
 export default PatientsSlice.reducer;
