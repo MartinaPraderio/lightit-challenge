@@ -1,0 +1,42 @@
+{
+  "name": "light-it-challenge",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint --ext js,jsx,ts,tsx ./",
+    "prettier": "prettier --check --write './{components,pages,store,types,styles}/**/*.{js,jsx,tsx,ts,json,css}'"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.2.6",
+    "axios": "^1.7.2",
+    "axios-logger": "^2.8.1",
+    "class-variance-authority": "^0.7.0",
+    "next": "14.2.5",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-modal": "^3.16.1",
+    "react-redux": "^9.1.2",
+    "react-toastify": "^10.0.5",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/react-modal": "^3.16.3",
+    "@types/react-redux": "^7.1.33",
+    "@types/uuid": "^10.0.0",
+    "@typescript-eslint/eslint-plugin": "^7.17.0",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.5",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "postcss": "^8",
+    "prettier": "^3.3.3",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}
