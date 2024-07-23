@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { PatientRecord } from "@/types/PatientRecord";
 import logoBlue from "@/assets/heartPulseLogo.svg";
 import { Button } from "@/components/shared/Button";
-import EditModal from "./EditModal";
+import EditModal from "./PatientModal";
 import { RootState } from "@/store/store";
 import { addPatient } from "@/store/slices/PatientsSlice";
 

@@ -10,6 +10,7 @@ export const PatientService = BaseService.injectEndpoints({
       }),
     }),
   }),
+  overrideExisting: false,
 });
 
 export const { useGetPatientRecordsQuery } = PatientService;

@@ -1,11 +1,11 @@
 import type { AppProps } from "next/app";
-import { Provider } from "react-redux";
-import Header from "@/components/Header";
-import store from "@/store/store";
-import "@/styles/globals.css";
 import Head from "next/head";
+import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "@/styles/globals.css";
+import Header from "@/components/Header";
+import store from "@/store/store";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

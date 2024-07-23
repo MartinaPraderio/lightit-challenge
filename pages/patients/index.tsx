@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { PatientRecord } from "@/types/PatientRecord";
-import Card from "@/components/Card";
+import PatientCard from "@/components/PatientCard";
 import Loading from "@/components/shared/Loading";
 import Error from "@/components/shared/Error";
 import { RootState } from "@/store/store";
@@ -34,7 +34,7 @@ export default function PatientRecords(): JSX.Element {
     <>
       <ul id="records">
         {patientRecords?.map((element: PatientRecord, i: number) => (
-          <Card key={i} dataCard={element} />
+          <PatientCard key={i} dataCard={element} />
         ))}
       </ul>
     </>
