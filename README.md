@@ -2,15 +2,23 @@
 ## Getting Started
 
 First install all needed packages
-
 ```bash
 yarn install
 ```
 
 Then, run the development server:
-
 ```bash
 yarn dev
+```
+
+Runs ESLint to analyze and find issues in JavaScript and TypeScript files (.js, .jsx, .ts, .tsx) in the project's root directory and subdirectories.
+```bash
+yarn lint
+```
+
+Runs Prettier to format and ensure code style consistency in JavaScript, TypeScript, JSON, and CSS files within the specified directories (components, pages, store, types, styles).
+```bash
+yarn prettier
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
